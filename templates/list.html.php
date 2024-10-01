@@ -6,7 +6,6 @@
                 <th>Imie</th>
                 <th>Nazwisko</th>
                 <th>Email</th>
-                <th>Haslo</th>
                 <th>User_active</th>
             </tr>
         </thead>

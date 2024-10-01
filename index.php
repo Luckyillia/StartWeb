@@ -70,7 +70,6 @@ $result = $db->query($sql);
                         echo "<td>" . $row['user_name'] . "</td>";
                         echo "<td>" . $row['user_surname'] . "</td>";
                         echo "<td>" . $row['user_email'] . "</td>";
-                        echo "<td>" . $row['user_password'] . "</td>";
                         echo "<td>" . $row['user_active'] . "</td>";
                         echo "</tr>";
                 }
