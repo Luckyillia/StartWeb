@@ -7,6 +7,8 @@
                 <th>Nazwisko</th>
                 <th>Email</th>
                 <th>User_active</th>
+                <th>Edytowac</th>
+                <th>Usun</th>
             </tr>
         </thead>
     <tbody>

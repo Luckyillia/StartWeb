@@ -71,6 +71,8 @@ $result = $db->query($sql);
                         echo "<td>" . $row['user_surname'] . "</td>";
                         echo "<td>" . $row['user_email'] . "</td>";
                         echo "<td>" . $row['user_active'] . "</td>";
+						echo "<td class=''><a href='user_admin_edit_user.php?id=" . $row['id'] . "'>Edytuj</a></td>";
+                        echo "<td class=''><a href='user_admin_drop_user.php?id=" . $row['id'] . "'>Usun</a></td>";
                         echo "</tr>";
                 }
                 ?>
