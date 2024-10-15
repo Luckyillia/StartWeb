@@ -22,11 +22,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		$query = "INSERT INTO users SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}', user_password = '$password'";
 		if ($db->query($query))
 		{
-			echo 'Data was inserted Successfully';
+			echo "<div class='border border-info bg-info bg-opacity-10 text-center rounded'>Data was inserted Successfully</div>";
 		}
 		else
 		{
-			echo 'Data has not been inserted!';
+			echo "<div class='border border-info bg-info bg-opacity-10 text-center rounded'>Data has not been inserted!</div>";
 		}
 	}
 }
@@ -34,15 +34,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 if(isset($_GET['action'])){
 	switch ($_GET['action']) {
 		case 'edit':
-			// $sql = "DELETE FROM users WHERE id=".$_GET['id'];
-			// if($db->query($sql)){
-				
-			// }
-			// break;
+				// $sql = "DELETE FROM users WHERE id=".$_GET['id'];
+				// if($db->query($sql)){
+					
+				// }
+				// break;
 		case 'drop':
 			$sql = "DELETE FROM users WHERE id=".$_GET['id'];
-			if($db->query($sql)){
-				
+			if ($db->query($sql))
+			{
+				echo "<div class='border border-info bg-info bg-opacity-10 text-center rounded'>Uzytkownik usunienty</div>";
 			}
 			break;
 		default:
@@ -66,7 +67,7 @@ $result = $db->query($sql);
 		<link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css"/>
 	</head>
 	
-	<body class>
+	<body>
 		<br>
 		<section>
 			<?php include ('templates/form.html.php'); ?>
