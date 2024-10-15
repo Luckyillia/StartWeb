@@ -31,8 +31,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 }
 
-
-
+if(isset($_GET['action'])){
+	switch ($_GET['action']) {
+		case 'edit':
+			// $sql = "DELETE FROM users WHERE id=".$_GET['id'];
+			// if($db->query($sql)){
+				
+			// }
+			// break;
+		case 'drop':
+			$sql = "DELETE FROM users WHERE id=".$_GET['id'];
+			if($db->query($sql)){
+				
+			}
+			break;
+		default:
+			# code...
+			break;
+	}
+}
+$sql = "SELECT * FROM users ORDER BY id ASC";
+$result = $db->query($sql);
 ?>
 
 
@@ -58,29 +77,3 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		</section>
 	</body>
 </html>
-<?php
-$sql = "SELECT * FROM users ORDER BY id ASC";
-$result = $db->query($sql);
-
-    if ($result->num_rows > 0) {
-
-                while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . $row['user_name'] . "</td>";
-                        echo "<td>" . $row['user_surname'] . "</td>";
-                        echo "<td>" . $row['user_email'] . "</td>";
-                        echo "<td>" . $row['user_active'] . "</td>";
-						echo "<td class=''><a href='user_admin_edit_user.php?id=" . $row['id'] . "'>Edytuj</a></td>";
-                        echo "<td class=''><a href='user_admin_drop_user.php?id=" . $row['id'] . "'>Usun</a></td>";
-                        echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-
-    <?php
-    } else {
-        echo "Nie ma nic";
-    }
-    ?>

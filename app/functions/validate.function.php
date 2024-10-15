@@ -1,5 +1,6 @@
 <?php
 
+
 $isError = false;
 $msg = [];
 
@@ -45,3 +46,29 @@ function displayErrors()
         return null;
     }
 }
+function displayTable($result) {
+
+    if ($result->num_rows > 0) {
+
+                while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['id'] . "</td>";
+                        echo "<td>" . $row['user_name'] . "</td>";
+                        echo "<td>" . $row['user_surname'] . "</td>";
+                        echo "<td>" . $row['user_email'] . "</td>";
+                        echo "<td>" . $row['user_active'] . "</td>";
+						echo "<td class=''><a href='index.php?action=edit&id=".$row['id']."'>Edytuj</a></td>";
+                        echo "<td class=''><a href='index.php?action=drop&id=".$row['id']. "'>Usun</a></td>";
+                        echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+
+    <?php
+    } else {
+        echo "<div class='border border-info bg-info bg-opacity-10 text-center rounded'>Nie ma nic</div>";
+    }
+    
+}
+?>

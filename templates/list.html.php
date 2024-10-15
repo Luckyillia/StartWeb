@@ -12,4 +12,5 @@
             </tr>
         </thead>
     <tbody>
+    <?php displayTable($result); ?>
 </div>
