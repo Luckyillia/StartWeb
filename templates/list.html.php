@@ -1,4 +1,5 @@
 <div class="container border border-info bg-info bg-opacity-10 border-3 p-2 rounded">
+    <h1 style='text-align:center;'>Lista Uzytkownikow</h1>
     <table class="table border-info">
         <thead>
             <tr>
@@ -12,5 +13,10 @@
             </tr>
         </thead>
     <tbody>
-    <?php displayTable($result); ?>
+    <?php 
+    $sql = "SELECT * FROM users ORDER BY id ASC";
+    $result = $db->query($sql);
+    displayTable($result); 
+    ?>
+    <a class="btn btn-warning" href="<?php echo BASE_URL; ?>">Powrót</a>
 </div>

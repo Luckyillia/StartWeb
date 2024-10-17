@@ -18,6 +18,7 @@
             <input class="form-control" type="password" name="password2" placeholder="Powtórz hasło" require />
         </div>
         <dvi class="buttons">
+            <a class="btn btn-warning" href="<?php echo BASE_URL; ?>">Powrót</a>
             <button class="btn btn-primary" type="submit" name="submit">Wyślij</button>
         </div>
     </form>

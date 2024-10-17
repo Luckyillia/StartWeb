@@ -57,8 +57,8 @@ function displayTable($result) {
                         echo "<td>" . $row['user_surname'] . "</td>";
                         echo "<td>" . $row['user_email'] . "</td>";
                         echo "<td>" . $row['active'] . "</td>";
-						echo "<td class=''><a href='index.php?action=edit&id=".$row['id']."'>Edytuj</a></td>";
-                        echo "<td class=''><a onclick='return confirm(\"Jestes pewny?\")' href='index.php?action=drop&id=".$row['id']. "'>Usun</a></td>";
+						echo "<td class=''><a class='btn btn-info' href='index.php?action=edit&id=".$row['id']."'>Edytuj</a></td>";
+                        echo "<td class=''><a class='btn btn-danger' onclick='return confirm(\"Jestes pewny?\")' href='index.php?action=drop&id=".$row['id']. "'>Usun</a></td>";
                         echo "</tr>";
                 }
                 ?>
