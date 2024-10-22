@@ -7,6 +7,9 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="assets/css/bootstrap.rtl.css"/>
 		<link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css"/>
+        <link rel="stylesheet" href="assets/icon/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="assets/icon/font/bootstrap-icons.min.css">
+        
 	</head>
 	
 	<body>
