@@ -1,13 +1,5 @@
 <?php
-    $formAction = 'index.php?page=' . $_GET['page'] . '&action=';
-    if (isset($_GET['id']))
-    {
-        $formAction .= 'edit';
-    }
-    else
-    {
-        $formAction .= 'add';
-    }
+    $formAction = 'index.php?page=' . $_GET['page'] . '&action='.$_GET['action'];
 ?>
 <?php if($isError): displayErrors(); endif; ?>
 <form class="row g-2" action="<?php echo $formAction; ?>" method="post">
