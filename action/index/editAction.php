@@ -1,7 +1,8 @@
 <?php
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $sql = "UPDATE users SET user_name='".$_POST['name']."', user_surname='".$_POST['surname']."', user_email='".$_POST['email']."' WHERE id=" . $_POST['id'];
+    $active = isset($_POST['active']) ? 1 : 0;
+    $sql = "UPDATE users SET user_name='".$_POST['name']."', user_surname='".$_POST['surname']."', user_email='".$_POST['email']."', active=".$active." WHERE id=" . $_POST['id'];
     if ($db->query($sql))
     {
         $_SESSION['message']['info'] = 'Uzytkownik zedytowany';
@@ -21,4 +22,5 @@ if (isset($_GET['id']))
     $form['name'] = $row['user_name'];
     $form['surname'] = $row['user_surname'];
     $form['email'] = $row['user_email'];
+    $form['active'] = $row['active'];
 }
