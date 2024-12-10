@@ -1,13 +1,12 @@
 <?php
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $active = isset($_POST['active']) ? 1 : 0;
-    $sql = "UPDATE users SET user_name='".$_POST['name']."', user_surname='".$_POST['surname']."', user_email='".$_POST['email']."', active=".$active." WHERE id=" . $_POST['id'];
-    if ($db->query($sql))
+    $update = "UPDATE users SET user_name='".$_POST['name']."', user_surname='".$_POST['surname']."', user_email='".$_POST['email']."', active=".$active." WHERE id=" . $_POST['id'];
+    if ($db->query($update))
     {
-        $_SESSION['message']['info'] = 'Uzytkownik zedytowany';
+        echo "<div class='border border-info bg-info bg-opacity-10 text-center rounded'>Uzytkownik zedytowany</div>";
     }else{
-        $_SESSION['message']['warning'] = 'warning';
+
     }
     redirect('?page=index&action=users');
 }
@@ -22,5 +21,5 @@ if (isset($_GET['id']))
     $form['name'] = $row['user_name'];
     $form['surname'] = $row['user_surname'];
     $form['email'] = $row['user_email'];
-    $form['active'] = $row['active'];
+    $form['active'] = (int) $row['active'];
 }

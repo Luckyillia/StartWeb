@@ -3,5 +3,5 @@
 <a class="btn bg-primary" href='?page=index&action=users'>Uzytkownicy</a>
 <br>
 <br>
-<a class="btn bg-primary" href='?page=index&action=save'>Dodac</a>
+<a class="btn bg-primary" href='?page=index&action=add'>Dodac</a>
 </section>

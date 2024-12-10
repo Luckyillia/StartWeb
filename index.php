@@ -15,7 +15,7 @@ if(!isset($_SESSION['user'])) {
     include('templates/MasterPage.html.php');
 }
 
-if (isset($_SESSION['message'])) {
+if(isset($_SESSION['message'])) {
     unset($_SESSION['message']);
 }
 ?>
