@@ -1,5 +1,3 @@
-<section>
-	<div class="container border border-primary bg-primary bg-opacity-10 border-3 rounded mx-auto p-2">
-		<?php include ('templates/form.html.php') ?>
-	</div>
-</section> 
+<div class="container border border-primary bg-primary bg-opacity-10 border-3 rounded mx-auto p-2">
+	<?php include ('templates/form.html.php') ?>
+</div>

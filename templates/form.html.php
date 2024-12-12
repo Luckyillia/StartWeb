@@ -1,8 +1,9 @@
 <?php
     $formAction = 'index.php?page=' . $_GET['page'] . '&action='.$_GET['action'];
+    $f = "index.php?page=index&action=save";
 ?>
 <?php if($isError): displayErrors(); endif; ?>
-<form class="row g-2" action="index.php?page=index&action=save" method="post">
+<form class="row g-2" action="<?php echo $formAction; ?>" method="post">
     <input type="hidden" name="id" value="<?php if(isset($form['id'])): echo $form['id']; endif; ?>" />
     <legend class="text-center"><h1 class="align-center">Formularz rejestracji użytkownika</h1></legend>
     <div class="col-md-6">
@@ -18,7 +19,7 @@
     if(isset($form)){
     ?>
     <div class="col-md-12">
-        <input type="checkbox" id="checkpass" name="checkpass"/>
+        <input type="checkbox" id="checkpass" name="reset"/>
         <label for="checkpass">Czy chcesz edytowac haslo</label>
     </div>
     <?php

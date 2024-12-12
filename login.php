@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 exit;
             }
         }else{
-            $_SESSION['message']['warning'] = 'Uzytkownik jest nie aktywny';
+            $_SESSION['message']['warning'] = 'Nie poprawny login lub haslo';
             redirect('index.php');
             exit;
         }

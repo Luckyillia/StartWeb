@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css"/>
         <link rel="stylesheet" href="assets/icon/font/bootstrap-icons.css">
         <link rel="stylesheet" href="assets/icon/font/bootstrap-icons.min.css">
-        
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
 	</head>
 	
 	<body>
@@ -31,13 +31,13 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="./">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href='?page=index&action=users'>Uzytkownicy</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href='?page=index&action=add'>Dodac</a>
                     </li>
                 </ul>
                 <span class="navbar-text m-2">
@@ -48,19 +48,21 @@
             </div>
         </nav>
 		<main>
-            <?php
-                $page = isset($_GET['page'])?$_GET['page'] : 'index';
-                $action = isset($_GET['action'])?$_GET['action'] : 'index';
-                if(is_file($actionFile = 'action'. DIRECTORY_SEPARATOR . $page . DIRECTORY_SEPARATOR . $action .'Action.php')){
-                    include($actionFile);
-                    if(is_file($viewFile = 'templates/views'. DIRECTORY_SEPARATOR . $page . DIRECTORY_SEPARATOR . $action .'.php')){
-                        include($viewFile);
+            <section class='content'>
+                <?php
+                    $page = isset($_GET['page'])?$_GET['page'] : 'index';
+                    $action = isset($_GET['action'])?$_GET['action'] : 'index';
+                    if(is_file($actionFile = 'action'. DIRECTORY_SEPARATOR . $page . DIRECTORY_SEPARATOR . $action .'Action.php')){
+                        include($actionFile);
+                        include('templates/messages.html.php');
+                        if(is_file($viewFile = 'templates/views'. DIRECTORY_SEPARATOR . $page . DIRECTORY_SEPARATOR . $action .'.php')){
+                            include($viewFile);
+                        }
+                    }else{
+                        throw new Exception("Error Processing Request".$actionFile);
                     }
-                }else{
-                    throw new Exception("Error Processing Request".$actionFile);
-                }
-                exit;
-            ?>    
+                ?>
+            </section>  
         </main>
 	</body>
 </html>

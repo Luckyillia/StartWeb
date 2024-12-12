@@ -15,6 +15,7 @@
 	<body>
 		<main>
             <div class="container border border-primary bg-primary bg-opacity-10 border-3 rounded mx-auto p-2">
+                <?php include('templates/messages.html.php'); ?>
                 <form class="row g-2" action="login.php" method="post">
                     <legend class="text-center"><h1 class="align-center">Formularz logowania użytkownika</h1></legend>
                     <div class="col-md-12">

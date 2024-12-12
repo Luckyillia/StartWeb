@@ -1,3 +1,1 @@
-<section>
-	<?php include ('templates/list.html.php'); ?>
-</section>
+<?php include ('templates/list.html.php'); ?>
