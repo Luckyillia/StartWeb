@@ -28,6 +28,8 @@ if (!empty($_POST['id']))
         {
             $_SESSION['message']['warning'] = 'DB';
         }
+    }else{
+        $form = $_POST;
     }
 }
 if (isset($_GET['id']))
