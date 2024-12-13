@@ -17,7 +17,7 @@
         <input class="form-control" type="text" name="email" placeholder="Adres E-mail" value="<?php if(isset($form['email'])): echo $form['email']; endif;?>">
     </div>
     <?php 
-    if(isset($form)){
+    if(isset($form['id'])){
     ?>
     <div class="col-md-12">
         <input type="checkbox" id="checkpass" class="form-check-input" name="reset" <?php if (isset($form['reset']) && $form['reset'] == 1) : echo 'checked'; endif; ?> />

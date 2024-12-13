@@ -9,7 +9,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 		isEmail('E-mail', $_POST['email']);
 	}
-
+	fieldRequired('Haslo', $_POST['password']);
+	fieldRequired('Powt.Haslo', $_POST['password2']);
+	if(!$isError)
+	{
+		isPassword($_POST['password'], $_POST['password2']);
+	}
 	if (!$isError)
 	{	
 		/* status Bool(true|false), msg String) */
@@ -19,6 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         if ($db->query($query))
         {
             $_SESSION['message']['success'] = 'Git';
+			redirect('index.php?page=index&action=users');
         }
         else
         {
