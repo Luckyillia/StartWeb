@@ -64,5 +64,6 @@
                 ?>
             </section>  
         </main>
+        <script defer src="assets/js/script.js"></script>
 	</body>
 </html>

@@ -1,7 +1,9 @@
 <?php
 if (!empty($_POST['id']))
 {
-
+    $id = (int) $_POST['id'];
+    $active = isset($_POST['active']) ? 1 : 0;
+    $password = md5($_POST['password']);
 	fieldRequired('Imię', $_POST['name']);
 	fieldRequired('Nazwisko', $_POST['surname']);
 	fieldRequired('E-mail', $_POST['email']);
@@ -9,16 +11,19 @@ if (!empty($_POST['id']))
 	{
 		isEmail('E-mail', $_POST['email']);
 	}
-    if (isset($_POST['reset']))
-    {
-        fieldRequired('Hasło', $_POST['password']);
+    if($_POST['reset']){
+        fieldRequired('Haslo', $_POST['password']);
+        fieldRequired('Powt.Haslo', $_POST['password2']);
+        if(!$isError)
+        {
+            isPassword($_POST['password'], $_POST['password2']);
+        }
+        $query = "UPDATE users SET user_name='".$_POST['name']."', user_surname='".$_POST['surname']."', user_email='".$_POST['email']."', active=".$active.", user_password='$password' WHERE id=" . $_POST['id'];
+    }else{
+        $query = "UPDATE users SET user_name='".$_POST['name']."', user_surname='".$_POST['surname']."', user_email='".$_POST['email']."', active=".$active." WHERE id=" . $_POST['id'];
     }
 	if (!$isError)
-	{    
-        $id = (int) $_POST['id'];
-        $active = isset($_POST['active']) ? 1 : 0;
-        $query = "UPDATE users SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}', active = $active  WHERE id = $id";
-        
+	{   
         if ($db->query($query))
         {
             $_SESSION['message']['success'] = 'Git';
@@ -30,6 +35,8 @@ if (!empty($_POST['id']))
         }
     }else{
         $form = $_POST;
+        $form['active'] = isset($_POST['active']) ? 1 : 0;
+        $form['reset'] = isset($_POST['reset']) ? 1 : 0;
     }
 }
 if (isset($_GET['id']))

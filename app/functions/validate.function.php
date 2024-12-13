@@ -6,7 +6,8 @@ $msg = [];
 
 $arrErrors = [
     'required' => 'Pole %s% jest wymagane!',
-	'email' => 'Adres E-mail w polu %s% jest niepoprawny!'
+	'email' => 'Adres E-mail w polu %s% jest niepoprawny!',
+    'haslo' => 'Hasla sie roznia'
 ];
 
 function fieldRequired($fieldName, $fieldVal)
@@ -24,6 +25,13 @@ function isEmail($fieldName, $fieldVal) {
     if (!filter_var($fieldVal, FILTER_VALIDATE_EMAIL)) {
         $isError = true;
         $msg[] = str_replace('%s%', $fieldName, $arrErrors['email']);
+    }
+}
+function isPassword($fieldVal1, $fieldVal2){
+    global $isError, $msg, $arrErrors;
+    if(strcmp($fieldVal1, $fieldVal2)){
+        $isError = true;
+        $msg[] = $arrErrors['haslo'];
     }
 }
 
