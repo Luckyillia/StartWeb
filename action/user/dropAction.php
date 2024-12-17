@@ -7,6 +7,6 @@ if(isset($_GET['action'])){
     }else{
         $_SESSION['message']['warning'] = 'warning';
     }
-    redirect('?page=index&action=users');
+    redirect('?page=user&action=users');
 }
 ?> 

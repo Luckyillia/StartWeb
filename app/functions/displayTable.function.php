@@ -10,8 +10,8 @@ if ($result->num_rows > 0) {
                     echo "<td>" . $row['user_surname'] . "</td>";
                     echo "<td>" . $row['user_email'] . "</td>";
                     echo "<td>" .showStatusIcon($row['active']). "</td>";
-                    echo "<td class=''><a class='btn btn-info' href='".BASE_URL."?page=index&action=edit&id=".$row['id']."'>Edytuj</a></td>";
-                    echo "<td class=''><a class='btn btn-danger' onclick='return confirm(\"Jestes pewny?\")' href='".BASE_URL."?page=index&action=drop&id=".$row['id']."'>Usun</a></td>";
+                    echo "<td class=''><a class='btn btn-info' href='".BASE_URL."?page=user&action=edit&id=".$row['id']."'>Edytuj</a></td>";
+                    echo "<td class=''><a class='btn btn-danger' onclick='return confirm(\"Jestes pewny?\")' href='".BASE_URL."?page=user&action=drop&id=".$row['id']."'>Usun</a></td>";
                     echo "</tr>";
             }
             ?>

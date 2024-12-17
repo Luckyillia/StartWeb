@@ -27,7 +27,7 @@ if (!empty($_POST['id']))
         if ($db->query($query))
         {
             $_SESSION['message']['success'] = 'Git';
-            redirect('?page=index&action=users');
+            redirect('?page=user&action=users');
         }
         else
         {
