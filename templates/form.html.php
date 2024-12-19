@@ -1,5 +1,6 @@
 <?php
     $formAction = 'index.php?page=' . $_GET['page'] . '&action='.$_GET['action'];
+    $page = $_GET['page'];
     $f = "index.php?page=index&action=save";
     $style = isset($form['active']) ? 'block' : 'none';
 ?>
@@ -46,7 +47,7 @@
         <label for="active">Active</label>
     </div>
     <dvi class="buttons">
-        <a class="btn btn-warning" href="<?php echo BASE_URL; ?>">Powrót</a>
+        <a class="btn btn-warning" href="<?php echo "index.php?page=".$page; ?>">Powrót</a>
         <button class="btn btn-primary" type="submit" name="submit">Wyślij</button>
     </div>
 </form>
