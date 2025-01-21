@@ -7,7 +7,7 @@
 <?php if($isError): displayErrors(); endif; ?>
 <form class="row g-2" action="<?php echo $formAction; ?>" method="post">
     <input type="hidden" name="id" value="<?php if(isset($form['id'])): echo $form['id']; endif; ?>" />
-    <legend class="text-center"><h1 class="align-center">Formularz rejestracji użytkownika</h1></legend>
+    <legend class="text-center"><h1 class="align-center">Formularz <?php echo isset($form['id'])?'edytowania':'rejestrowania'; ?> użytkownika</h1></legend>
     <div class="col-md-6">
         <input class="form-control" type="text" name="name" placeholder="Imię" value="<?php if(isset($form['name'])): echo $form['name']; endif;?>" require>
     </div>

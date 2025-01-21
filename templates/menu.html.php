@@ -9,7 +9,7 @@ foreach($menu as $el){
                     <?php
                     foreach($el['action'] as $action){?>
                     <li>
-                        <a class="nav-link" href="index.php?page=<?php echo $el['page']; ?>&action=<?php echo $action['action']; ?>"><?php echo $action['title']; ?></a>
+                        <a class="dropdown-item" href="index.php?page=<?php echo $el['page']; ?>&action=<?php echo $action['action']; ?>"><?php echo $action['title']; ?></a>
                     </li>
                 
                  <?php 
