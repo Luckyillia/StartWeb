@@ -5,7 +5,7 @@
     $style = isset($form['active']) ? 'block' : 'none';
 ?>
 <?php if($isError): displayErrors(); endif; ?>
-<form class="row g-2" action="<?php echo $formAction; ?>" method="post">
+<form class="row g-2" action="<?php echo $formAction; ?>" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php if(isset($form['id'])): echo $form['id']; endif; ?>" />
     <legend class="text-center"><h1 class="align-center">Formularz <?php echo isset($form['id'])?'edytowania':'dodawania'; ?> aktualności</h1></legend>
     <div class="col-md-12">
@@ -15,7 +15,7 @@
         <input class="form-control" type="text" name="title" placeholder="Tytuł" value="<?php if(isset($form['title'])): echo $form['title']; endif;?>" require>
     </div>
     <div class="col-md-12">
-        <input class="form-control" type="text" name="autor" placeholder="Autor" value="<?php if(isset($form['autor'])): echo $form['autor']; endif;?>" require>
+        <input class="form-control" type="text" name="author" placeholder="Autor" value="<?php if(isset($form['author'])): echo $form['author']; endif;?>" require>
     </div>
     <div class="col-md-12">
         <input class="form-control" type="textarea" name="text" placeholder="Treść" value="<?php if(isset($form['text'])): echo $form['text']; endif;?>" require>

@@ -1,26 +1,30 @@
 <?php
-<?php
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-	fieldRequired('Imię', $_POST['name']);
-	fieldRequired('Nazwisko', $_POST['surname']);
-	fieldRequired('E-mail', $_POST['email']);
-	fieldRequired('Hasło', $_POST['password']);
-	if(!$isError)
+	if (!file_exists(UPLOAD_PATH))
 	{
-		isEmail('E-mail', $_POST['email']);
+		mkdir(UPLOAD_PATH, 0777);
 	}
-	fieldRequired('Haslo', $_POST['password']);
-	fieldRequired('Powt.Haslo', $_POST['password2']);
-	if(!$isError)
-	{
-		isPassword($_POST['password'], $_POST['password2']);
+
+	fieldRequired('Tytuł', $_POST['title']);
+	fieldRequired('Autor', $_POST['author']);
+	fieldRequired('Treść', $_POST['text']);
+
+	if($_FILES['image']['error'] == 4){
+		fieldRequired('Image', '');
 	}
-	if (!$isError)
+
+	$tmp_name = $_FILES['image']['tmp_name'];
+	$filetype = $_FILES['image']['type'];
+	$allowedTypes = [
+		'image/png' => 'png',
+		'image/jpeg' => 'jpg',
+		'image/gif' => 'gif'
+	 ];
+	if (!$isError && in_array($filetype, array_keys($allowedTypes)))
 	{	
-		$dbStatus = [];
 		$active = isset($_POST['active']) ? 1 : 0;
-		$query = "INSERT INTO news SET user_name = '{$_POST['name']}', user_surname = '{$_POST['surname']}', user_email = '{$_POST['email']}', user_password = '$password',active=$active";
+		$query = "INSERT INTO news SET news_filename = '{$_FILES['image']['name']}', news_title = '{$_POST['title']}', news_author = '{$_POST['author']}', news_content = '{$_POST['text']}', news_publish_date = NOW(), news_active=$active";
 		if ($db->query($query))
         {
             $_SESSION['message']['success'] = 'Git';
@@ -33,9 +37,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 	else
 	{
-		$form['name'] = $_POST['name'];
-		$form['surname'] = $_POST['surname'];
-		$form['email'] = $_POST['email'];
+		$form['title'] = $_POST['title'];
+		$form['author'] = $_POST['author'];
+		$form['text'] = $_POST['text'];
+		if(!empty($_FILES['image']['type']) && !in_array($filetype, array_keys($allowedTypes))){
+			$_SESSION['message']['warning'] = 'Nie poprawny typ pliku';
+		}
 	}
 }
 ?>
