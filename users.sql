@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 25 2025 г., 03:21
+-- Время создания: Янв 27 2025 г., 16:38
 -- Версия сервера: 10.4.32-MariaDB
 -- Версия PHP: 8.2.12
 
@@ -20,22 +20,6 @@ SET time_zone = "+00:00";
 --
 -- База данных: `illia`
 --
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `news`
---
-
-CREATE TABLE `news` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `news_filename` varchar(255) NOT NULL,
-  `news_title` varchar(255) NOT NULL,
-  `news_author` varchar(128) NOT NULL,
-  `news_content` text NOT NULL,
-  `news_publish_date` datetime NOT NULL,
-  `news_active` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -64,12 +48,6 @@ INSERT INTO `users` (`id`, `user_name`, `user_surname`, `user_email`, `user_pass
 --
 
 --
--- Индексы таблицы `news`
---
-ALTER TABLE `news`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -78,12 +56,6 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
-
---
--- AUTO_INCREMENT для таблицы `news`
---
-ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

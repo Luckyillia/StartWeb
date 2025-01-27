@@ -1,1 +1,1 @@
-<?php include ('templates/list.html.php'); ?>
+<?php include ('templates/list.user.html.php'); ?>

@@ -10,21 +10,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	fieldRequired('Autor', $_POST['author']);
 	fieldRequired('Treść', $_POST['text']);
 
-	if($_FILES['image']['error'] == 4){
+	if($_FILES['image']['error'] != 0){
 		fieldRequired('Image', '');
 	}
 
 	$tmp_name = $_FILES['image']['tmp_name'];
 	$filetype = $_FILES['image']['type'];
 	$allowedTypes = [
-		'image/png' => 'png',
-		'image/jpeg' => 'jpg',
-		'image/gif' => 'gif'
+		'image/png' => '.png',
+		'image/jpeg' => '.jpg',
+		'image/gif' => '.gif'
 	 ];
 	if (!$isError && in_array($filetype, array_keys($allowedTypes)))
 	{	
 		$active = isset($_POST['active']) ? 1 : 0;
-		$query = "INSERT INTO news SET news_filename = '{$_FILES['image']['name']}', news_title = '{$_POST['title']}', news_author = '{$_POST['author']}', news_content = '{$_POST['text']}', news_publish_date = NOW(), news_active=$active";
+		$name = date("Y-m-d_H-i-s").$allowedTypes[$filetype];
+		move_uploaded_file($tmp_name, UPLOAD_PATH."/".$name);
+		$query = "INSERT INTO news SET news_filename = '{$name}', news_title = '{$_POST['title']}', news_author = '{$_POST['author']}', news_content = '{$_POST['text']}', news_publish_date = NOW(), news_active=$active";
 		if ($db->query($query))
         {
             $_SESSION['message']['success'] = 'Git';
