@@ -4,10 +4,12 @@
         $result = $db->query($sql);
         if ($result->num_rows > 0) {
              while ($row = $result->fetch_assoc()) {
+                $filePath = UPLOAD_PATH . DIRECTORY_SEPARATOR . $row['news_filename'];
+                $imagePath = file_exists($filePath) ? $row['news_filename'] : 'default_img.png';
                 ?>
                 <div>
-                    <div>
-                        <img src="<?php echo UPLOAD_PATH."\\".$row['news_filename']?>">
+                    <div class="text-center">
+                        <img src="<?php echo BASE_URL . 'upload/' . $imagePath; ?>" alt="News Image" class="rounded">
                     </div>
                     <div>
                         <h1><?php echo $row['news_title'] ?></h1>
