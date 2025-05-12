@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="assets/icon/font/bootstrap-icons.css">
         <link rel="stylesheet" href="assets/icon/font/bootstrap-icons.min.css">
         <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <title>StartWeb</title>
 	</head>
 	
 	<body>
